@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/notfound.css' %}" />
+
+  {% block title %}<title>Hata! - Bazı şeyler beklediğimiz gibi gitmedi</title>{% endblock %}
+</head>
+<body>
+{% block hata %}
+<div class="header">
+	<h1>Hata sayfası</h1>
+</div>
+<div class="w3-main">
+	<div class="agile-info">
+		<h3>üzgünüz</h3>
+		<h3><img src="{% static "imeyg/confused.gif" %}" alt="image"></h3>
+		<p>Bu kullanıcı adı veya e-postayla bir kullanıcı adı zaten mevcut.</p>
+
+		<a href="/register/">gerİ dön</a>
+	</div>
+</div>
+{% endblock %}
+</body>
+</html>

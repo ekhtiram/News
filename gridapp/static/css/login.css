@@ -1,0 +1,246 @@
+/* Base CSS */
+.alignleft {
+    float: left;
+    margin-right: 15px;
+}
+.alignright {
+    float: right;
+    margin-left: 15px;
+}
+.aligncenter {
+    display: block;
+    margin: 0 auto 15px;
+}
+a:focus { outline: 0 solid }
+img {
+    max-width: 100%;
+    height: auto;
+}
+.fix { overflow: hidden }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 15px;
+}
+html,
+body {
+  background: url(../imeyg/login.jpg) no-repeat;
+  background-size: cover;
+}
+
+a {
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    color: #333;
+}
+a:hover { text-decoration: none }
+
+
+
+.search-box{margin:80px auto;position:absolute;}
+.caption{margin-bottom:50px;}
+.loginForm input[type=text], .loginForm input[type=password]{
+	margin-bottom:10px;
+}
+.loginForm input[type=submit]{
+	background:#5F9EA0;
+	color:#fff;
+}
+
+
+#pswd_info {
+	background: #dfdfdf none repeat scroll 0 0;
+	color: #fff;
+	left: 20px;
+	position: absolute;
+	top: 125px;
+}
+#pswd_info h4{
+    background: #5F9EA0 none repeat scroll 0 0;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0;
+    padding: 17px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+#pswd_info ul {
+    list-style: outside none none;
+}
+#pswd_info ul li {
+   padding: 10px 45px;
+}
+
+.checkbox.show:before {
+    content: '\e013';
+    color: #5F9EA0;
+    font-size: 17px;
+    margin: 1px 0 0 3px;
+    position: absolute;
+    pointer-events: none;
+    font-family: 'Glyphicons Halflings';
+}
+.checkbox .character-checkbox {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    display: inline-block;
+}
+.checkbox .label {
+    color: #6d6d6d;
+    font-size: 13px;
+    font-weight: normal;
+    border-color: #D2691E;
+}
+
+.btn-info{
+  color: #fff;
+  background-color: #5f9ea5;
+  border-color: #46b8da;
+  width: 180px;
+  border-radius: 5px;
+}
+.login{
+  border-style: hidden;
+  border-width: 1px;
+  border-bottom: 6px dotted #5F9EA0;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  padding: 10px;
+  opacity:0.9;
+}
+
+.hatirlatma{
+  border-style: hidden;
+  border-width: 1px;
+  border-bottom: 6px dotted #5F9EA0;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  padding: 10px;
+  opacity:0.7;
+}
+
+.logout{
+  border-style: hidden;
+  border-width: 1px;
+  border-bottom: 6px dotted #5F9EA0;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  margin-left: 420px;
+  margin-right: 420px;
+  padding: 10px;
+  opacity:0.9;
+}
+
+.oturum{
+	color: #5F9EA0;
+	line-height: 20px;
+  width: 14%;
+  margin-bottom: 0.3cm;
+  width: 250px;
+}
+.kul{
+	line-height: 20px;
+  padding-right: 102px;
+  font-size: 100%;
+  margin-left: 2px;
+}
+.sif{
+	line-height: 20px;
+  padding-right: 65px;
+  text-align: center;
+  margin-left: 2px;
+}
+.unuttum{
+  line-height: 20px;
+  padding-left: 80px;
+  font-size: 90%;
+}
+
+.uyari{
+    border-left: 4px solid #00a3cc;
+    border-right: 4px solid #00a3cc;
+    background-color: #e6e6ff;
+    margin-left: 450px;
+    margin-right: 450px;
+}
+
+.cizgi{
+  border-bottom: 2px solid #5F9EA0;
+}
+
+.valid {
+	background: rgba(0, 0, 0, 0) url("https://s19.postimg.org/vq43s2wib/valid.png") no-repeat scroll 2px 6px;
+	color: green;
+	line-height: 21px;
+	padding-left: 22px;
+}
+
+.invalid {
+	background: rgba(0, 0, 0, 0) url("https://s19.postimg.org/olmaj1p8z/invalid.png") no-repeat scroll 2px 6px;
+	color: red;
+	line-height: 21px;
+	padding-left: 22px;
+}
+
+
+#pswd_info::before {
+    background: #dfdfdf none repeat scroll 0 0;
+    content: "";
+    height: 25px;
+    left: -13px;
+    margin-top: -12.5px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 25px;
+}
+#pswd_info {
+    display:none;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 101; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

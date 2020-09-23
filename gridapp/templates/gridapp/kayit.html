@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/modern-business.css' %}" />
+
+  <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+
+  {% block title %}<title>Kayıt Formu - Benim site</title>{% endblock %}
+</head>
+<body>
+{% block kayit %}
+<div  class="logout">
+    <div class="caption" align=center>
+      <h3 style="color:#5F9EA0; font-size:33px;">DJANGO - Kayıt formu</h3>
+      <p style="font-size:22px;">Hesabınız başarılı bir şekilde oluşturuldu.</p><hr/>
+      Şimdi siteye <a href="/login/" class="cizgi">Giriş yap</a>'a bilirsiniz.
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

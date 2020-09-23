@@ -1,0 +1,406 @@
+{% load staticfiles %}
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/drp.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/modern-business.css' %}" />
+
+  {% block slidecss %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/slide.css' %}" />
+  {% endblock %}
+  <!--{% block isimcss %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/isim.css' %}" />
+  {% endblock %}-->
+  {% block logincss %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+  {% endblock %}
+  <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+
+  {% block title %}<title>Django - Ana Sayfa</title>{% endblock %}
+
+{% block script %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/jquerytour.css' %}" />
+
+  <script type="text/javascript">
+  function confirmation() {
+  var answer = confirm("Çıkış yapmak istediğinizden emin misiniz?")
+  if (answer){
+  window.location = "/logout/";
+  }
+  else{
+  window.location = "";
+  }
+  }
+  </script>
+{% endblock %}
+
+{% block hosgeldin %}
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+			$(function() {
+
+				var config = [
+				],
+				//define if steps should change automatically
+				autoplay	= false,
+				//total number of steps
+				total_steps	= config.length;
+
+				//show the tour controls
+				showControls();
+
+				function showControls(){
+					var $tourcontrols  = '<div id="tourcontrols" class="tourcontrols">';
+					$tourcontrols += '<p>{{ hosgeldin }} {{ user }}</p>';
+
+					$('BODY').prepend($tourcontrols);
+					$('#tourcontrols').animate({'right':'20px'},500);
+				}
+			});
+    </script>
+{% endblock %}
+
+</head>
+<body>
+  {% block sidebar %}
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/home/" style="font-size:24px;">Ana Sayfa</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+<!--admin-->        {% if request.user.is_superuser %}
+                    <li>
+                        <a href="/admin/" style="font-size:20px;">->-ADMİN->-</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="/haberekle/" style="font-size:17px;">Haber Ekle</a>
+                    </li>
+                    <li>
+                        <a href="/haberler/" style="font-size:17px;">Haberler</a>
+                    </li>
+                    <li class="dropdown">
+                      <button class="dropbtn" style="font-size:17px;"> &#8801</button>
+                        <div class="dropdown-content">
+                          <a href="/hesabim/" style="font-size:17px;">Hesabım</a>
+                          <a href="#" style="font-size:17px;" onclick="confirmation()">Çıkış yap</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
+  {% block slide %}
+  <div class="slider-container">
+    <div class="slider-control left inactive"></div>
+    <div class="slider-control right"></div>
+    <ul class="slider-pagi"></ul>
+    <div class="slider">
+      <div class="slide slide-0 active">
+        <div class="slide__bg"></div>
+        <div class="slide__content">
+          <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+            <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+          </svg>
+          <div class="slide__text">
+            <h2 class="slide__text-heading">İstanbul</h2>
+            <p class="slide__text-desc">İstanbul Türkiye'nin kuzeybatısında, Marmara kıyısı ve Boğaziçi boyunca, Haliç'i de çevreleyecek şekilde kurulmuştur. İstanbul kıtalararası bir şehir olup, Avrupa'daki bölümüne Avrupa Yakası veya Rumeli Yakası, Asya'daki bölümüne ise Anadolu Yakası veya Asya Yakası denir.</p>
+            <p style="font-size:15px;">Yeni hesap açmak için
+            <a href="/register/" class="slide__text-link"> Kayıt Ol</a>abilirsiniz</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide slide-1 ">
+        <div class="slide__bg"></div>
+        <div class="slide__content">
+          <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+            <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+          </svg>
+          <div class="slide__text">
+            <h2 class="slide__text-heading">Sakarya</h2>
+            <p class="slide__text-desc">Sakarya'nın kuzeyinde Karadeniz, batısında Kocaeli, Bursa, doğusunda Düzce ve güneyinde de Bolu ile Bilecik bulunmaktadır. Sakarya Nehri, Sakarya'nın Karasu ilçesinde Karadeniz'e dökülür.</p>
+            <p style="font-size:15px;">Yeni hesap açmak için
+            <a href="/register/" class="slide__text-link"> Kayıt Ol</a>abilirsiniz</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide slide-2">
+        <div class="slide__bg"></div>
+        <div class="slide__content">
+          <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+            <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+          </svg>
+          <div class="slide__text">
+            <h2 class="slide__text-heading">Ataşehir</h2>
+            <p class="slide__text-desc">Ataşehir, İstanbul'un Anadolu yakasında bulunan bir ilçedir. 2008 yılında Kadıköy, Ümraniye ve Üsküdar'dan bazı mahallelerin içine katılmasıyla ilçe statüsü kazanarak İstanbul'un 39 ilçesinden biri olmuştur.</p>
+            <p style="font-size:15px;">Yeni hesap açmak için
+            <a href="/register/" class="slide__text-link"> Kayıt Ol</a>abilirsiniz</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide slide-3">
+        <div class="slide__bg"></div>
+        <div class="slide__content">
+          <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
+            <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
+          </svg>
+          <div class="slide__text">
+            <h2 class="slide__text-heading">Adapazarı</h2>
+            <p class="slide__text-desc">Uzun yıllar Kocaeli’ye bağlı bir ilçe olarak yaşayan Adapazarı, TBMM’de 17 Haziran 1954 tarihinde kabul edilen bir yasa ile “Sakarya” adıyla vilayet haline gelmiştir. Sakarya ilinin merkez ilçesi ise Adapazarı’dır.</p>
+            <p style="font-size:15px;">Yeni hesap açmak için
+            <a href="/register/" class="slide__text-link"> Kayıt Ol</a>abilirsiniz</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block iletisim %}
+    <h3>{{ iletisim }}</h3></br>
+  {% endblock %}
+
+  {% block giris %}
+  <div class="container" style="font-size:15px;">
+  	<div class="row">
+  		<div class="col-md-4 col-md-offset-4 text-center">
+  			<div class="search-box">
+  				<div class="caption">
+  					<h3 style="color:#5F9EA0;">DJANGO - Giriş sayfası</h3>
+  					<p>Hoş Geldiniz</p>
+  				</div>
+  				<form action="" class="loginForm">
+  					<div class="input-group">
+  						<input type="username" id="name" class="form-control" placeholder="Kullanıcı adı" style="font-size:15px;">
+  						<input type="password" id="paw" class="form-control" placeholder="Şifre" style="font-size:15px;">
+  						<input type="submit" id="submit" class="form-control" value="Kayıt Ol" style="font-size:15px;">
+  					</div>
+            <div style="color:#DCDCDC;"><br/>yada</div>
+            <p><div align=center style="font-size:17px;"><a href="/home/" style="color:#D2691E">Ana Sayfa</a>'ya geri dön</div></p>
+  				</form>
+  			</div>
+  		</div>
+  		<div class="col-md-4">
+  			<div class="aro-pswd_info">
+  				<div id="pswd_info">
+  					<h4>Şifrede zorunlu şartlar</h4>
+  					<ul>
+  						<li id="letter" class="invalid">En az <strong>bir kelime</strong></li>
+  						<li id="capital" class="invalid">En az <strong>bir büyük harf</strong></li>
+  						<li id="number" class="invalid">En az <strong>bir rakam</strong></li>
+  						<li id="length" class="invalid">En az <strong>8 karakter </strong>olmalı</li>
+  					</ul>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  {% endblock %}
+  <!--{% block isim %}
+  <div class="container">
+  	<div class="row">
+  	<svg viewBox="0 0 960 300">
+      <symbol id="s-text">
+  		<text text-anchor="middle" x="50%" y="80%">Ayhan </text>
+  	</symbol>
+
+  	<g class = "g-ants">
+  		<use xlink:href="#s-text" class="text-copy"></use>
+  		<use xlink:href="#s-text" class="text-copy"></use>
+  		<use xlink:href="#s-text" class="text-copy"></use>
+  		<use xlink:href="#s-text" class="text-copy"></use>
+  		<use xlink:href="#s-text" class="text-copy"></use>
+  	</g>
+    </svg>
+  	</div>
+  </div>
+  {% endblock %}-->
+
+
+  {% block register %}
+  <div  class="logout">
+    <form method="POST" align=center>
+      <div class="caption" align=center>
+        <h3 style="color:#5F9EA0; font-size:33px;">DJANGO - Kayıt sayfası</h3>
+        <p style="font-size:22px;">Hoş Geldiniz</p><hr/>
+        Zaten hesabım var. <a href="/login/" class="cizgi">Giriş yap</a>
+      </div>
+      {% if messages %}
+        {% for message in messages %}
+            <p style="font-size:14px;"><pre style="color:red;">&#9888; Bu kullanıcı adıyla bir hesap var!</pre></p>
+        {% endfor %}
+      {% endif %}
+        <div style="color:#5F9EA0; font-size:17px;" align=center>{% csrf_token %} {{ form.as_p }}</div>
+        <div style="color:#5F9EA0; font-size:18px;">
+          <input type="submit" class="btn btn-info" value="Hesap aç" class="oturum"/>
+        </div>
+    </form>
+  </div>
+  {% endblock %}
+
+
+  {% block login %}
+
+      {% if next %}
+          {% if user.is_authenticated %}
+          <p style="font-size:14px; color: red;" align=center><code>Hesabınızın bu sayfaya erişimi yok. Devam etmek için,</code></p>
+          <p style="font-size:14px; color: red;" align=center><code>Lütfen erişime sahip bir hesapla giriş yapın.</code></p>
+          {% else %}
+          <div class="uyari">
+            <p align=center style="font-family: Monospace"> ANA SAYFAYA GİTMEK İÇİN GİRİŞ YAPMANIZ GEREKİYOR.</p>
+          </div>
+          {% endif %}
+      {% endif %}
+
+      <!--SuperKullanici ise gizli buton gozukur-->
+      <!--{% if request.user.is_superuser %}
+        <button>dadas</button>
+      {% endif %}-->
+    <div class="col-md-4">
+    </div>
+    <div  class="login col-md-4">
+      <form method="post" action="{% url 'login' %}" align=center>
+        {% csrf_token %}
+        <div class="caption">
+          <h3 style="color:#5F9EA0; font-size:33px;">DJANGO - Giriş sayfası</h3>
+          <p style="font-size:22px;">Hoş Geldiniz</p><hr/>
+          Hesabın yok mu? Hemen <a href="/register/" class="cizgi">Kayıt Ol</a>
+        </div>
+        {% if form.errors %}
+        <p style="font-size:14px;"><pre style="color:red;">&#9888; Kullanıcı adı veya şifre yanlış!</pre></p>
+        {% endif %}
+        <div style="color:#5F9EA0; font-size:19px;" class="kul">
+          <span>{{ form.username.label_tag }}</span>
+          <input type="username" type={{ form.username }}
+        </div>
+        <div style="color:#5F9EA0; font-size:19px;" class="sif">
+          <span>{{ form.password.label_tag }}</span>
+          <input id="key" type="password" type={{ form.password }}
+        </div>
+        <div class="checkbox">
+            <span class="character-checkbox" onclick="showPassword()"></span>
+            <span class="label">Şifreyi göster</span>
+        </div>
+
+        <div style="color:#5F9EA0; font-size:18px;">
+          <button type="submit" class="btn btn-info" class="oturum">Oturum aç</button>
+          <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+        {# Assumes you setup the password_reset view in your URLconf #}
+        <p class="unuttum"><a href="{% url 'password_reset' %}"><u>Şifremi unuttum?</u></a></p>
+      </form>
+          <br/><p align=center><strong style="color:#A9A9A9;">-- VEYA --</strong></p>
+          <br/><p><div align=center style="font-size:17px;"><a href="/home/" style="color:#D2691E">Ana sayfa</a>'ya git</div></p>
+    </div>
+    <div class="col-md-1">
+    </div>
+    {% if user.is_authenticated %}
+    <div class="hatirlatma col-md-2">
+      <div class="caption">
+        <h3 style="color:#5F9EA0; font-size:23px;" align=center>&#9854; HATIRLATMA</h3><hr/>
+        <span style="font-size:15px;">En son ({{ user.last_login|naturaltime }}) <a href="/admin/"><code>{{user}}</code></a> isimli kullanıcı adıyla giriş yapıldı.
+        Oturum kapatılmadı, hala açık.
+        <br/><br/>Kapatmak veya Çıkış yapmak için <a href="/logout/" class="cizgi">tıklayın</a></span>
+      </div>
+      <div align=right style="font-size:12px;">Son giriş tarihi <br/><span style="color:#5F9EA0;">{{ user.last_login }}</span></div>
+    </div>
+    {% endif %}
+
+  {% endblock %}
+
+  {% block logged_out %}
+    <div align=center class="logout">
+      <p><code>Çıkış yapıldı!</code></p>
+      <a href="{% url 'login'%}">Yeniden giriş yapmak için tıklayın.</a>
+    </div>
+  {% endblock %}
+
+  {% block password_reset_form %}
+    <div class="logout">
+      <h3 align=center>Şifremi unuttum</h3>
+      <form method="post" align=center style="color:#5F9EA0;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-info">Gönder</button>
+      </form>
+    </div>
+  {% endblock %}
+
+  {% block password_reset_email %}
+    Birisi {{ email }} e-postası için şifre sıfırlamasını istedi.
+    "{{user.get_username}}" adlı hesabınızın şifre sıfırlama işlemini başlatmak için,
+    Aşağıdaki bağlantıyı tıklayın:
+
+    Yukarıdaki bağlantıyı tıklamak işe yaramazsa, lütfen URL'yi kopyalayıp yeni bir
+    tarayıcı penceresine yapıştırın.
+
+    Kolay gelsin,
+    Ayhan Sadiqov
+  {% endblock %}
+
+
+
+
+  {% block password_reset_done %}
+    <div class="logout">
+      <p align=center style="font-size:14px; color: #3CB371;">&#10004; Girdiğiniz e-posta ile bir hesap varsa şifre ayarlama talimatlarını size e-postayla gönderdik. Bunları kısa süre içinde almalısınız.</p>
+      <p align=center style="font-size:14px; color: #696969;">E-posta almadıysanız, lütfen kaydolduğunuz adrese girdiğinizden emin olun ve spam klasörünüzü kontrol edin.</p>
+      </br><p><div align=center style="font-size:17px;"><a href="/accounts/login/" style="color:#D2691E">Oturum aç</a> sayfasına geri dön.</div></p>
+    </div>
+  {% endblock %}
+
+
+  {% block password_reset_confirm %}
+  {% if validlink %}
+    <h3>Change password</h3>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Change password</button>
+    </form>
+  {% else %}
+    <div class="logout" align=center>
+      <p>Şifre sıfırlama bağlantısı geçersiz, daha önce de kullanılmış olduğu için olabilir.</p>
+      <p>Lütfen yeni bir şifre sıfırlama isteğinde bulunun.</p>
+    </div>
+  {% endif %}
+{% endblock %}
+
+
+{% block password_reset_complete %}
+  <p align=center>
+    Şifreniz değiştirildi. Devam edebilir ve <u><a href="{% url 'login' %}">giriş</a></u> yapabilirsiniz.
+  </p>
+{% endblock %}
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.9&appId=1402325716513950";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/slide.js' %}"></script>
+<script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

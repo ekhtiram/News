@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/sil.css' %}" />
+
+  {% block title %}<title>Butoooon</title>{% endblock %}
+</head>
+<body>
+
+  {% block sil %}
+		<div class="btn">
+			<div class="btn-back">
+				<p>Bunu yapmak istediğine emin misin?</p>
+				<button class="yes">Evet</button>
+				<button class="no">Hayır</button>
+			</div>
+			<div class="btn-front">Sil</div>
+		</div>
+
+		<p class="description">Butonun farklı taraflarını tıklamayı deneyin</p>
+
+		<style type="text/css" media="screen">
+			.project-title {
+				position: absolute;
+				left: 25px;
+				bottom: 8px;
+				font-size: 16px;
+				color: #444;
+			}
+			.credits {
+				position: absolute;
+				right: 20px;
+				bottom: 25px;
+				font-size: 15px;
+				z-index: 20;
+				color: #444;
+				vertical-align: middle;
+			}
+			.credits * + * {
+				margin-left: 15px;
+			}
+			.credits a {
+				padding: 8px 10px;
+				color: #444;
+				border: 2px solid #999;
+				text-decoration: none;
+			}
+			.credits a:hover {
+				border-color: #555;
+				color: #222;
+			}
+			@media screen and (max-width: 1040px) {
+				.project-title {
+					display: none;
+				}
+				.credits {
+					width: 100%;
+					left: 0;
+					right: auto;
+					bottom: 0;
+					padding: 30px 0;
+					background: #ddd;
+					text-align: center;
+				}
+				.credits a {
+					display: inline-block;
+					margin-top: 7px;
+					margin-bottom: 7px;
+				}
+			}
+		</style>
+
+		<script>
+			var _gaq = [['_setAccount', 'UA-15240703-1'], ['_trackPageview']];
+			(function(d, t) {
+			var g = d.createElement(t),
+			    s = d.getElementsByTagName(t)[0];
+			g.async = true;
+			g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g, s);
+			})(document, 'script');
+		</script>
+
+    <script src="{% static 'js/sil.js' %}"></script>
+
+    {% endblock %}
+
+	</body>
+</html>
